@@ -568,13 +568,14 @@ _CODE_PATTERNS = {
         r"\b(INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM)\b",
     ],
     "python": [
-        r"^\s*(def|class|import|from|if|for|while|try|except|with)\s+",
-        r"^\s*@\w+",  # decorators
+        r"^\s*(def|class|import|from)\s+",
+        r"^\s*@\w+",
         r"\b(print|len|range|str|int|float|list|dict|set)\s*\(",
     ],
     "javascript": [
-        r"\b(function|const|let|var|class|import|export)\s+",
-        r"=>",  # arrow functions
+        r"\bfunction\s+\w+\s*\(",
+        r"\b(const|let|var)\s+\w+\s*=",
+        r"=>",
         r"\b(console\.(log|error|warn))\s*\(",
     ],
     "typescript": [
@@ -588,18 +589,21 @@ _CODE_PATTERNS = {
     ],
     "go": [
         r"\bfunc\s+\w+\s*\(",
-        r"\b(package|import)\s+",
-        r":=",  # short variable declaration
+        r"^\s*(package|import)\s+",
+        r":=",
     ],
     "rust": [
-        r"\b(fn|let|mut|impl|struct|enum|pub|mod)\s+",
-        r"->",  # return type
+        r"\bfn\s+\w+\s*\(",
+        r"\blet\s+(mut\s+)?\w+\s*[=:]",
+        r"\b(impl|struct|enum|pub|mod)\s+\w+",
         r"\b(println!|format!)\s*\(",
     ],
     "shell": [
         r"^#!.*\b(bash|sh|zsh)\b",
-        r"\b(echo|grep|sed|awk|cat|ls|cd|mkdir|rm)\s+",
-        r"\$\{?\w+\}?",  # variable expansion
+        r"^\s*echo\s+['\"\$`]",
+        r"\|\s*(grep|awk|sed|cut|sort)\b",
+        r"^\s*export\s+\w+=",
+        r"\$\{?\w+\}?",
     ],
     "html": [
         r"<\s*(html|head|body|div|span|p|a|img|script|style)\b[^>]*>",
@@ -620,11 +624,12 @@ _CODE_PATTERNS = {
     "php": [
         r"<\?php\b",
         r"\$\w+\s*=",
-        r"\b(echo|print|var_dump|isset|empty)\s*[(\s]",
+        r"\b(var_dump|isset|empty)\s*\(",
+        r"\becho\s+['\"\$]",
     ],
     "ruby": [
         r"^\s*def\s+\w+(\s*\(.*\))?\s*$",
-        r"\b(puts|print|require|attr_accessor|attr_reader)\s+",
+        r"\b(puts|require|attr_accessor|attr_reader)\s+",
         r"^\s*end\s*$",
     ],
 }
