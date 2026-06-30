@@ -609,6 +609,24 @@ _CODE_PATTERNS = {
         r"\{[^}]*:\s*[^}]+;[^}]*\}",
         r"@(media|keyframes|import|font-face)\b",
     ],
+    "c_cpp": [
+        r"#include\s*[<\"][\w./]+[>\"]",
+        r"\bint\s+main\s*\(",
+        r"\b(printf|scanf|fprintf|sprintf|malloc|calloc|realloc|free)\s*\(",
+        r"\b(cout|cin|cerr)\s*<<",
+        r"\bstd::\w+",
+        r"\b(void|int|char|float|double|long|unsigned)\s+\w+\s*\(",
+    ],
+    "php": [
+        r"<\?php\b",
+        r"\$\w+\s*=",
+        r"\b(echo|print|var_dump|isset|empty)\s*[(\s]",
+    ],
+    "ruby": [
+        r"^\s*def\s+\w+(\s*\(.*\))?\s*$",
+        r"\b(puts|print|require|attr_accessor|attr_reader)\s+",
+        r"^\s*end\s*$",
+    ],
 }
 
 
